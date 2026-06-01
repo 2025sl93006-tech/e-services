@@ -1,0 +1,27 @@
+/* Star rating */
+.star-filled  { color: #ffc107; font-size: 1.1rem; }
+.star-empty   { color: #dee2e6; font-size: 1.1rem; }
+.star-interactive { cursor: pointer; transition: color 0.15s; }
+.star-interactive:hover { color: #fd7e14; }
+
+/* Provider card hover */
+.provider-card { transition: transform 0.2s, box-shadow 0.2s; }
+.provider-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+
+/* Hero gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+  color: #fff;
+  padding: 5rem 0;
+}
+
+/* Category card */
+.category-card { cursor: pointer; transition: transform 0.2s; }
+.category-card:hover { transform: scale(1.04); }
+
+/* Order status badges */
+.status-pending     { background-color: #ffc107; color: #000; }
+.status-confirmed   { background-color: #0dcaf0; color: #000; }
+.status-in-progress { background-color: #0d6efd; color: #fff; }
+.status-completed   { background-color: #198754; color: #fff; }
+.status-cancelled   { background-color: #dc3545; color: #fff; }
