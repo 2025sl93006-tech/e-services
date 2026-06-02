@@ -1,7 +1,7 @@
 const Order = require('../models/Order');
 const ServiceProvider = require('../models/ServiceProvider');
 const User = require('../models/User');
-const { sendOrderConfirmation } = require('../services/emailService');
+const { sendOrderConfirmation, sendStatusUpdate } = require('../services/emailService');
 
 exports.create = async (req, res) => {
   try {
@@ -114,8 +114,12 @@ exports.updateStatus = async (req, res) => {
       req.params.id,
       { orderStatus: req.body.orderStatus },
       { new: true }
-    );
+    ).populate('user', 'name email').populate('provider', 'name');
     if (!order) return res.status(404).json({ message: 'Order not found' });
+
+    sendStatusUpdate(order.user.email, order.user.name, order, order.provider.name)
+      .catch((err) => console.error('Status email error:', err));
+
     res.json(order);
   } catch (err) {
     res.status(500).json({ message: err.message });
